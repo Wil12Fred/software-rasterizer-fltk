@@ -1,8 +1,9 @@
-FLTK_INCLUDE = `fltk-config --cxxflags`
-FLTK_LIBS = `fltk-config --ldflags`
+FLTK_CONFIG ?= fltk-config
+FLTK_INCLUDE = `$(FLTK_CONFIG) --cxxflags`
+FLTK_LIBS = `$(FLTK_CONFIG) --ldflags`
 
 INCLUDE  =  $(FLTK_INCLUDE) -I./math/numerical -I./math/euclidean -I./renderer -I./structures -I.
-CXXFLAGS = -g -Wall $(INCLUDE) 
+CXXFLAGS = -g -Wall -Wno-register $(INCLUDE) 
 LIBS = $(FLTK_LIBS) 
 
 OBJS =  raylite.o \
@@ -26,3 +27,5 @@ all:	$(TARGET)
 
 clean:
 	rm -f $(OBJS) $(TARGET)
+
+.PHONY: all clean
