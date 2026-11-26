@@ -11,7 +11,7 @@ implements the classic pipeline stages by hand:
 | Cohen–Sutherland line clipping | `struct CohenSutherland`, `renderer/geometry.h` |
 | Sutherland–Hodgman polygon clipping | `struct SutherlandHodgeman`, `renderer/geometry.h` |
 | Perspective projection, transformations | `struct Transformations`, `renderer/geometry.h` |
-| Depth buffer, color interpolation, lighting | `renderer/renderer.cpp` |
+| Depth buffer, color interpolation, lighting | `renderer/geometry.h`, `renderer/triangle.cpp`, `renderer/polygon.cpp`, `renderer/renderer.cpp` |
 
 The scene (camera, lights, objects, transformations) is read from a text file;
 `raylite.cpp` loads `data/test-cubo.scn`.
