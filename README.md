@@ -1,4 +1,6 @@
-# Simple Renderer (Computación Gráfica)
+# software-rasterizer-fltk
+
+> Simple Renderer (Computación Gráfica)
 
 Final project for a Computer Graphics course (2018): a small software rasterizer written
 from scratch in C++. It draws into an FLTK window pixel by pixel — no OpenGL — and
