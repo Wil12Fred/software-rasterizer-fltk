@@ -25,7 +25,18 @@ $(TARGET):	$(OBJS)
 
 all:	$(TARGET)
 
-clean:
-	rm -f $(OBJS) $(TARGET)
+# unit tests of geometry.h and the 4x4 math: no FLTK needed
+MATH_INCLUDE = -I./math/numerical -I./math/euclidean -I./renderer -I./structures -I.
+tests/test_geometry: tests/test_geometry.cpp renderer/geometry.h math/euclidean/euclidean.cpp math/euclidean/transformation.cpp
+	$(CXX) -g -Wall -Wno-register $(MATH_INCLUDE) -o $@ tests/test_geometry.cpp math/euclidean/euclidean.cpp math/euclidean/transformation.cpp
 
-.PHONY: all clean
+unit: tests/test_geometry
+	./tests/test_geometry
+
+test: unit $(TARGET)
+	./tests/smoke.sh
+
+clean:
+	rm -f $(OBJS) $(TARGET) tests/test_geometry
+
+.PHONY: all unit test clean
